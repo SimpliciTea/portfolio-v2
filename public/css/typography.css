@@ -1,0 +1,29 @@
+body {
+  font-family: "Montserrat", "sans-serif";
+  color: #111; }
+
+h1 {
+  font-family: "Montserrat", serif;
+  color: white;
+  font-size: 60px; }
+
+h2 {
+  color: white;
+  margin-top: 0px;
+  border-bottom: 1px dashed #f71e0c; }
+
+h3 {
+  color: white;
+  padding-bottom: 0px; }
+
+section {
+  font-size: 14px; }
+
+em {
+  font-weight: 800; }
+
+a {
+  color: #f71e0c; }
+
+a:hover {
+  color: red; }

@@ -1,0 +1,39 @@
+@import "colors";
+
+body {
+  font-family: "Montserrat", "sans-serif";
+  color: #111;
+}
+
+h1 {
+  font-family: "Montserrat", serif;
+  color: rgba(255,255,255,1);
+  font-size: 60px;
+}
+
+h2 {
+  color: white;
+  margin-top: 0px;
+  border-bottom: 1px dashed $link-color
+}
+
+h3 {
+  color: white;
+  padding-bottom: 0px;
+}
+
+section {
+  font-size: 14px;
+}
+
+em {
+  font-weight: 800;
+}
+
+a {
+  color: $link-color;
+}
+
+a:hover {
+  color: $link-hover-color;
+}

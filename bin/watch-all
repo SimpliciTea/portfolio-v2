@@ -1,0 +1,3 @@
+node-sass-chokidar --w -o public/css assets/sass/ &
+watchify assets/js/bundle-map.js -o public/js/bundle.js &
+nodemon --ignore public/js/**/* --ignore assets/js
