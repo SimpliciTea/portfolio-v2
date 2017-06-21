@@ -14,12 +14,16 @@ h1 {
 h2 {
   color: white;
   margin-top: 0px;
-  border-bottom: 1px dashed $link-color
+  border-bottom: 1px dashed $link-color;
+  font-size: 28px;
 }
 
 h3 {
   color: white;
+  font-size: 20px;
   padding-bottom: 0px;
+  padding-right: 10px;
+  margin-bottom: 10px;
 }
 
 section {
@@ -32,6 +36,45 @@ em {
 
 a {
   color: $link-color;
+
+  &.project-link {
+    color: white;
+
+    h3 {
+      position: relative;
+      margin-left: 43px;
+      
+    }
+
+    &--github h3::before {
+      display: block;
+      content: '';
+      position: absolute;
+      left: -43px;
+      top: 3px;
+      width: 35px;
+      height: 35px;
+      background-image: url('/images/GitHub-Mark-Light-32px.png');
+      background-size: cover;
+    }
+
+    &--web h3::before {
+      display: block;
+      content: '';
+      position: absolute;
+      left: -43px;
+      top: 3px;
+      width: 35px;
+      height: 35px;
+      background-image: url('/images/Globe_icon-white.svg');
+      background-size: cover;
+    }
+  }
+}
+
+.project-category {
+  color: white;
+  font-size: 16px;
 }
 
 a:hover {
