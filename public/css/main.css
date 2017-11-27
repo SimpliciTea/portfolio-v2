@@ -174,20 +174,29 @@ section {
       display: inline-block;
       position: relative;
       bottom: -1px; }
+      @media (max-width: 700px) {
+        section#about .project-category, section#work .project-category {
+          display: block;
+          margin-left: 42px; } }
     section#about .project-tools, section#work .project-tools {
       display: flex;
       list-style-type: none;
       margin: 3px 0px;
       padding: 0px 0px 0px 44px; }
+      @media (max-width: 700px) {
+        section#about .project-tools, section#work .project-tools {
+          flex-direction: column;
+          padding: 0px 0px 0px 33px; } }
       section#about .project-tools li, section#work .project-tools li {
         padding: 0px 10px;
         position: relative;
         text-transform: uppercase;
         font-size: 10px; }
-        section#about .project-tools li:first-child, section#work .project-tools li:first-child {
-          padding-left: 0px; }
-          section#about .project-tools li:first-child::before, section#work .project-tools li:first-child::before {
-            display: none; }
+        @media (min-width: 700px) {
+          section#about .project-tools li:first-child, section#work .project-tools li:first-child {
+            padding-left: 0px; }
+            section#about .project-tools li:first-child::before, section#work .project-tools li:first-child::before {
+              display: none; } }
         section#about .project-tools li::before, section#work .project-tools li::before {
           position: absolute;
           left: -1px;
@@ -198,14 +207,21 @@ section {
           border-radius: 50%;
           display: block;
           content: ''; }
-  section#skillset .devicons-wrapper {
-    height: 128px;
-    display: flex;
-    justify-content: space-between; }
-  section#skillset svg {
-    width: 10px;
-    min-width: 100px;
-    fill: white;
-    flex-wrap: wrap; }
-    section#skillset svg:hover {
-      width: 9%; }
+  section#contact a {
+    display: inline-block;
+    position: relative; }
+    section#contact a:not(:first-child) {
+      margin-left: 25px; }
+      section#contact a:not(:first-child):before {
+        display: block;
+        content: "";
+        position: absolute;
+        left: -16px;
+        top: 11px;
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background-color: white; }
+  section#contact h3 {
+    padding: 0px;
+    margin: 0px; }

@@ -168,6 +168,11 @@ section {
       
       position: relative;
       bottom: -1px;
+
+      @media(max-width: 700px) {
+        display: block;
+        margin-left: 42px;
+      }
     }
 
     .project-tools {
@@ -176,17 +181,24 @@ section {
       margin: 3px 0px;
       padding: 0px 0px 0px 44px;
 
+      @media(max-width: 700px) {
+        flex-direction: column;
+        padding: 0px 0px 0px 33px;
+      }
+
       li {
         padding: 0px 10px;
         position: relative;
         text-transform: uppercase;
         font-size: 10px;
 
-        &:first-child {
-          padding-left: 0px;
+        @media(min-width: 700px) {
+          &:first-child {
+            padding-left: 0px;
 
-          &::before {
-            display: none;
+            &::before {
+              display: none;
+            }
           }
         }
 
@@ -205,22 +217,31 @@ section {
     }
   }
 
-  &#skillset {
-    .devicons-wrapper {
-      height: 128px;
-      display: flex;
-      justify-content: space-between;
+  &#contact {
+    a {
+      display: inline-block;
+      position: relative;
+
+      &:not(:first-child) {
+        margin-left: 25px;
+
+        &:before {
+          display: block;
+          content: "";
+          position: absolute;
+          left: -16px;
+          top: 11px;
+          height: 5px;
+          width: 5px;
+          border-radius: 50%;
+          background-color: white;
+        }
+      }
     }
 
-    svg {
-      width: 10px;
-      min-width: 100px;
-      fill: white;
-      flex-wrap: wrap;
-
-      &:hover {
-        width: 9%;
-      }
+    h3 {
+      padding: 0px;
+      margin: 0px;
     }
   }
 }
