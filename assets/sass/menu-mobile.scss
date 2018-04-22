@@ -1,0 +1,218 @@
+$burger-height: 40px;
+$burger-width: 40px;
+$bar-thickness: 3px;
+$burger-padding: 6px;
+$burger-bar-space: -10px;
+$burger-transition-duration: 0.1s;
+$burger-color: white;
+
+div.nav-mobile {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 30px;
+  z-index: 200;
+  background-color: transparent;
+  transition: top 0.2s;
+
+  &:active {
+
+  }
+
+  button.menu-toggle {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    width: $burger-width;
+    height: $burger-height;
+    font-size: 0;
+    text-indent: -9999px;
+    -webkit-appearance: none;
+    box-shadow: none;
+    border-radius: 0px;
+    border: none;
+    cursor: pointer;
+    top: 5px;
+    left: 5px;
+    z-index: 300;
+
+    &:focus {
+      outline: none;
+    }
+
+    .menu-burger {
+      display: block;
+      position: absolute;
+      border-radius: 3px;
+      top: calc(calc(#{$burger-height} / 2) - calc(#{$bar-thickness} / 2);
+      left: $burger-padding;
+      right: $burger-padding;
+      height: $bar-thickness;
+      background: $burger-color;
+
+      &::before, &::after {
+        position: absolute;
+        display: block;
+        border-radius: 3px;
+        left: 0;
+        width: 100%;
+        height: $bar-thickness;
+        background-color: $burger-color;
+        content: "";
+      }
+
+      &::before {
+        top: $burger-bar-space;
+      }
+
+      &::after {
+        bottom: $burger-bar-space;
+      }
+    }
+  }
+
+  nav.menu-mobile {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 300px;
+    background-color: darken($oj, 5%);
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+    transition-delay: 0.2s;
+
+    &.active {
+      transform: translateX(0);
+      transition: transform 0.5s;
+      transition-delay: 0.1s;
+    }
+  }
+
+  #menu-mobile-backdrop {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 295px;
+    background-color: $oj;
+    z-index: 220;
+    transform: translateX(-100%);
+    transition: transform 0.7s ease-in-out;
+    transition-delay: 0.05s;
+
+    &.active {
+      transition: transform 0.7s ease-in-out;
+      transform: translateX(0);
+      transition-delay: 0s;
+    }
+  }
+
+  .menu-items {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 40px 10px;
+    list-style: none;
+    width: 100%;
+    background-color: transparent;
+    z-index: 240;
+
+
+    .menu-item {
+      width: 100%;
+      text-align: center;
+      background-color: transparent;
+      margin-bottom: 15px;
+      height: 40px;
+      
+
+      $n: 5;  
+
+      @for $i from 1 through $n {
+        $in: (($i - 1) * 0.1);
+        $out: (($n - $i) * 0.06);
+
+        &:nth-child(#{$i}) {
+          transition: transform 0.1s ease-in-out;
+          transition-delay: #{$out}s;
+          transform: translateX(-100%);
+          
+          &.active {
+            transition: transform 0.6s ease-in-out;
+            transition-delay: #{$in}s;
+            transform: translateX(0);
+          }
+        }
+      }
+
+
+      a {
+        display: block;
+        padding: 12px 24px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+        color: white;
+        line-height: 16px;
+        width: 100%;
+        height: 100%;        
+      }
+    }
+  }
+}
+
+body.has-active-menu {
+  overflow: hidden;
+}
+
+
+
+// Burger Animations
+div.nav-mobile .menu-toggle {
+  
+  .menu-burger {
+    transition: background 0s $burger-transition-duration;
+  
+    &::before, &::after {
+      transition-duration: $burger-transition-duration, $burger-transition-duration, $burger-transition-duration;
+      transition-delay: $burger-transition-duration, 0s, $burger-transition-duration;
+    }
+
+    &::before {
+      transition-property: top, transform, background;
+    }
+
+    &::after {
+      transition-property: bottom, transform, background;
+    }
+  }
+
+  &.active {
+    .menu-burger {
+      background: none;
+    
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+      }
+
+      &::before, &::after {
+        transition-delay: 0s, $burger-transition-duration, 0s;
+        background: white;
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 @import "colors";
 @import "typography";
+@import "menu-mobile";
 
 * {
   box-sizing: border-box;
@@ -12,7 +13,7 @@ body {
 }
 
 header {
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -22,22 +23,10 @@ header {
   background-image: 
     radial-gradient(ellipse farthest-side at top, rgb(247, 194, 36) 0%, rgba(255,255,255,0.0) 100%),
     url('../images/header_bg.png');
+  background-color: $oj;
   background-size: cover;
   position: relative;
-
-  &::after {
-    content: '';
-    display: block;
-    height: 0px;
-    width: 100%;
-    position: absolute;
-    bottom: -20px;
-    left: 0px;
-
-    border-bottom-left-radius: 200%;
-    border-bottom-right-radius: 200%;
-    border-bottom: 30px solid $bg-color;
-  }
+  border-bottom: 5px solid darken($oj, 5%);
 
   strong {
     color: rgba(255,255,255,0.9)
@@ -88,9 +77,20 @@ header {
     font-size: 18px;
     line-height: 1.2em;
   }
+
+  @media(max-width: 700px) {
+    .header_copy {
+      max-width: 90%;
+    }
+
+    p {
+      font-size: 1em;
+    }
+  }
 }
 
-nav {
+nav:not(.menu-mobile) {
+
   ul {
     list-style: none;
     display: flex;
@@ -120,39 +120,56 @@ nav {
       }
     }
   }
+
+  @media(max-width: 540px) {
+    display: none;
+  }
+}
+
+div.nav-mobile {
+  @media(min-width: 541px) {
+    display: none;
+  }
 }
 
 section {
   padding: 5vh 10vw;
-  background-image: linear-gradient(to right, $bg-color, rgba(247, 194, 36, 0.7), $bg-color);
 
   &:first-of-type h2 {
     margin-top: 5vh;
   }
 
-  &:nth-child(even) {
-    background-image:
-      linear-gradient(
-        to top right,
-        rgba(255,255,255,0.2),
-        rgba(255,255,255,0.1)
-      );
+  .section-content {
+    width: 100%;
+    max-width: 700px;
+    margin: 0px auto;
   }
 
-  &:nth-child(odd) {
-    background-image:
-      linear-gradient(
-        to bottom left,
-        rgba(246,139,21, 1),
-        rgba(255,255,255,0.1)
-      )
+  &#about {
+    padding-top: 70px;
+
+    &:after {
+      display: block;
+      content: "";
+      background-color: $oj;
+      width: 100vw;
+      height: 5px;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+    }
+  }
+
+  &#work {
+    background-color: lighten($oj, 5%);
   }
 
   &#about, &#work {
-    min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    position: relative;
     justify-content: center;
+    flex-grow: 1;
+    padding-bottom: 60px;
 
     h3 {
       display: inline;
@@ -179,7 +196,7 @@ section {
     .project-tools {
       display: flex;
       list-style-type: none;
-      margin: 3px 0px;
+      margin: 2px 0px;
       padding: 0px 0px 0px 44px;
 
       @media(max-width: 700px) {
@@ -191,7 +208,7 @@ section {
         padding: 0px 10px;
         position: relative;
         text-transform: uppercase;
-        font-size: 10px;
+        font-size: 12px;
 
         @media(min-width: 700px) {
           &:first-child {
@@ -219,6 +236,8 @@ section {
   }
 
   &#contact {
+    background-color: $oj;
+
     a {
       display: inline-block;
       position: relative;
@@ -241,6 +260,7 @@ section {
     }
 
     h3 {
+      color: white;
       padding: 0px;
       margin: 0px;
     }
