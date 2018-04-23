@@ -14,6 +14,7 @@ function scrollIt(destination, duration = 200, easing = 'linear', callback) {
 
   const documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
   const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+  
   const destinationOffset = typeof destination === 'number' ? destination : destination.offsetTop;
   const destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset);
 
@@ -29,9 +30,11 @@ function scrollIt(destination, duration = 200, easing = 'linear', callback) {
     const now = 'now' in window.performance ? performance.now() : new Date().getTime();
     const time = Math.min(1, ((now - startTime) / duration));
     
+    const distanceScrolled = Math.round(Math.abs(start - window.pageYOffset));
+
     window.scroll(0, Math.ceil((easeInOutQuad(time) * (destinationOffsetToScroll - start)) + start));
 
-    if (window.pageYOffset >= destinationOffsetToScroll - 3) {
+    if (distanceScrolled >= Math.abs(start - destinationOffsetToScroll - 3)) {
       if (callback) {
         callback();
       }
