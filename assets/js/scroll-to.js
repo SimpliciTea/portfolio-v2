@@ -14,9 +14,14 @@ function scrollIt(destination, duration = 200, easing = 'linear', callback) {
 
   const documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
   const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
-  
+
+  // if mobile menu is not shown, sets mobileNavbarHeight to 0
+  // otherwise sets mobileNavbarHeight to height of mobile navbar
+  const mobileMenu = document.getElementsByClassName('nav-mobile')[0];
+  const mobileNavbarHeight = mobileMenu.clientHeight;
+
   const destinationOffset = typeof destination === 'number' ? destination : destination.offsetTop;
-  const destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset);
+  const destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset) - mobileNavbarHeight;
 
   if ('requestAnimationFrame' in window === false) {
     window.scroll(0, destinationOffsetToScroll);
